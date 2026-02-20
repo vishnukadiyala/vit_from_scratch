@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+
+# ---------------------------
+# Project metadata
+# ---------------------------
+[project]
+name = "my-vit"
+version = "0.1.0"
+description = "Custom Vision Transformer implementation in PyTorch"
+readme = "README.md"
+requires-python = ">=3.10"
+
+authors = [
+  { name = "Vishnu Kadiyala" }
+]
+
+# Core runtime dependencies
+dependencies = [
+  "torch",
+  "torchvision",
+  "numpy",
+  "einops",        # common for transformer tensor reshaping
+  "pyyaml",        # config loading
+  "tqdm"           # training progress bars
+]
+
+
+# ---------------------------
+# Optional development deps
+# Install via: pip install -e .[dev]
+# ---------------------------
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "black",
+  "ruff",
+  "mypy",
+  "ipykernel",
+  "wandb"
+]
+
+
+# ---------------------------
+# setuptools package discovery
+# (for src/ layout)
+# ---------------------------
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+# ---------------------------
+# Formatting / linting
+# (keeps project consistent)
+# ---------------------------
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I"]
